@@ -3,23 +3,15 @@
 A full-stack blog application built with the MERN stack where users can register, login, and create, edit, and manage blog posts.
 
 🚀 Features
-
 🔐 Authentication (JWT)
-
 ✍️ Create, edit, delete posts
-
 📖 View all blogs
-
 🔒 Protected routes
-
 ⚛️ React frontend + Node/Express backend
 
 🛠 Tech Stack
-
 Frontend: React, React Router, Axios, Context API
-
 Backend: Node.js, Express.js
-
 Database: MongoDB (Mongoose)
 
 ⚙️ Setup
@@ -45,6 +37,6 @@ Backend → http://localhost:5000
 📂 Structure
 client/    → React app  
 server/    → Express API  
-👨‍💻 Author
 
+👨‍💻 Author
 Yash Raj Bhasin
