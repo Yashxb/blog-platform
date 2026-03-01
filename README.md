@@ -18,6 +18,7 @@ A full-stack Blog Platform built using the MERN stack (MongoDB, Express, React, 
 
 ⚡ RESTful API with Express & MongoDB
 
+
 🧰 Tech Stack
 Frontend
 
@@ -42,6 +43,55 @@ Backend
 🔒 bcryptjs for password hashing
 
 📁 Project Structure
+BLOG-PLATFORM/
+├─ backend/
+│  ├─ config/
+│  ├─ controllers/
+│  │  ├─ authController.js
+│  │  └─ postController.js
+│  ├─ middleware/
+│  │  └─ authMiddleware.js
+│  ├─ models/
+│  │  ├─ Post.js
+│  │  └─ User.js
+│  ├─ routes/
+│  │  ├─ authRoutes.js
+│  │  └─ postRoutes.js
+│  ├─ .env
+│  ├─ .gitignore
+│  ├─ package.json
+│  ├─ package-lock.json
+│  └─ server.js
+│
+└─ frontend/
+   ├─ node_modules/
+   ├─ public/
+   └─ src/
+      ├─ components/
+      │  ├─ Header.js
+      │  ├─ PostItem.js
+      │  └─ ProtectedRoute.js
+      ├─ context/
+      ├─ layout/
+      │  └─ MainLayout.js
+      ├─ pages/
+      │  ├─ Dashboard.js
+      │  ├─ MyProfile.js
+      │  ├─ NewPost.js
+      │  ├─ PostDetails.js
+      │  ├─ SignIn.js
+      │  └─ SignUp.js
+      ├─ services/
+      │  ├─ api.js
+      │  ├─ authService.js
+      │  └─ postService.js
+      ├─ styles/
+      │  ├─ App.css
+      │  └─ index.css
+      ├─ App.js
+      ├─ App.test.js
+      ├─ index.js
+      └─ logo.svg
 
 ⚙️ Installation & Setup
 1️⃣ Clone the Repository
