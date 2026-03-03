@@ -3,43 +3,28 @@
 A full-stack Blog Platform built using the MERN stack (MongoDB, Express, React, Node.js) that enables users to register, authenticate, and create/manage blog posts through a modern responsive interface.
 
 🚀 Live Features
-
 🔐 User Authentication (JWT based login/register)
-
 ✍️ Create, Edit & Delete Posts
-
 📖 View All Blogs & Single Post Pages
-
 🔒 Protected Routes for Authenticated Users
-
 🧠 Persistent Login using Local Storage
-
 🎨 Responsive UI with reusable components
-
 ⚡ RESTful API with Express & MongoDB
-
 
 🧰 Tech Stack
 Frontend
 
 ⚛️ React.js
-
 🔀 React Router DOM
-
 🌐 Axios
-
 🧠 Context API (Auth State)
 
 Backend
 
 🟢 Node.js
-
 🚀 Express.js
-
 🍃 MongoDB + Mongoose
-
 🔐 JWT Authentication
-
 🔒 bcryptjs for password hashing
 
 📁 Project Structure
@@ -95,6 +80,7 @@ BLOG-PLATFORM/
 
 ⚙️ Installation & Setup
 1️⃣ Clone the Repository
+
 git clone https://github.com/your-username/blog-platform.git
 cd blog-platform
 2️⃣ Backend Setup
@@ -122,14 +108,12 @@ Service	URL
 Frontend	http://localhost:3000
 
 Backend	http://localhost:5000
+
 🔐 Authentication Flow
 
 User registers or logs in
-
 Server returns a JWT token
-
 Token is stored in localStorage
-
 Protected routes validate the user using Context API
 
 📌 API Overview
@@ -140,16 +124,13 @@ GET	/api/posts	Get all posts
 POST	/api/posts	Create post
 PUT	/api/posts/:id	Update post
 DELETE	/api/posts/:id	Delete post
-🎯 Future Enhancements
+
+🎯 Future Enhancements:
 
 👍 Like & Comment system
-
 🔎 Search & filter posts
-
 👤 User profile pages
-
 📸 Image upload for posts
-
 🌍 Deployment (Vercel + Render + MongoDB Atlas)
 
 🧪 Testing
