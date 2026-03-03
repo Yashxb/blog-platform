@@ -109,8 +109,6 @@ Frontend	http://localhost:3000
 
 Backend	http://localhost:5000
 
-🔐 Authentication Flow
-
 User registers or logs in
 Server returns a JWT token
 Token is stored in localStorage
@@ -133,18 +131,18 @@ DELETE	/api/posts/:id	Delete post
 📸 Image upload for posts
 🌍 Deployment (Vercel + Render + MongoDB Atlas)
 
-🧪 Testing
+🧪 Testing:
 
 Basic manual testing performed using browser and API routes.
 
-🤝 Contributing
+🤝 Contributing:
 
 Contributions are welcome!
 Feel free to fork this repository and submit a pull request.
 
-👨‍💻 Author
+👨‍💻 Author:
 Yash Raj Bhasin
 
-⭐ Acknowledgement
+⭐ Acknowledgement:
 
 This project was built as part of a full-stack MERN learning journey.
