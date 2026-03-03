@@ -1,66 +1,57 @@
 import { useState, useContext } from "react";
-import { loginUser } from "../services/authService";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
 const SignIn = () => {
-  const [data, setData] = useState({
-    email: "",
-    password: "",
-  });
-
-  const { setUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
 
-  const submit = async (e) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    try {
-      const res = await loginUser(data);
+    const res = await fetch("http://localhost:5000/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
 
-      
-      localStorage.setItem("token", res.data.token);
+    const data = await res.json();
 
-      
-      localStorage.setItem(
-        "user",
-        JSON.stringify(res.data.user)
-      );
-
-      
-      setUser(res.data.user);
-
-      navigate("/");
-    } catch (err) {
-      alert("Invalid credentials");
+    if (!res.ok) {
+      alert(data.message);
+      return;
     }
+
+    login(data.user, data.token);
+    navigate("/");
   };
 
   return (
-    <form className="auth-form" onSubmit={submit}>
-      <h2>Welcome Back</h2>
+    <form className="auth-form" onSubmit={handleLogin}>
+      <h2>Login</h2>
 
       <input
         type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
         placeholder="Email"
-        value={data.email}
-        onChange={(e) =>
-          setData({ ...data, email: e.target.value })
-        }
         required
       />
 
       <input
         type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
         placeholder="Password"
-        value={data.password}
-        onChange={(e) =>
-          setData({ ...data, password: e.target.value })
-        }
         required
       />
 
-      <button className="btn-primary">Login</button>
+      <button className="btn-primary" type="submit">
+        Login
+      </button>
     </form>
   );
 };

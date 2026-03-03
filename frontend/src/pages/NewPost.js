@@ -1,14 +1,12 @@
-import { useState } from "react";
-import { createPost } from "../services/postService";
+import { useState, useContext } from "react";
+import { API } from "../services/api";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 const NewPost = () => {
-  const [form, setForm] = useState({
-    title: "",
-    content: ""
-  });
-
+  const [form, setForm] = useState({ title: "", content: "" });
   const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,13 +17,24 @@ const NewPost = () => {
     }
 
     try {
-      await createPost(form);
+      // Token automatically added by interceptor
+      await API.post("/posts", form);
+
+      alert("✅ Post created successfully!");
       navigate("/");
-    } catch (error) {
-      console.error("Post creation failed", error);
-      alert("Failed to publish post");
+    } catch (err) {
+      console.error("Error creating post:", err.response || err);
+      alert("Failed to create post. Check console.");
     }
   };
+
+  if (!user) {
+    return (
+      <div className="main-container">
+        <h2>Please login to create a post.</h2>
+      </div>
+    );
+  }
 
   return (
     <div className="main-container">

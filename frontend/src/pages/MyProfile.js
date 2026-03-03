@@ -9,41 +9,33 @@ const MyProfile = () => {
 
   useEffect(() => {
     const loadMyPosts = async () => {
+      if (!user) return;
       try {
         const res = await getPosts();
-
-        // filter only posts created by this user
-        const filtered = res.data.filter(
-          (post) => post.author?._id === user?.id
-        );
-
+        const filtered = res.data.filter((p) => p.author?._id === user._id);
         setMyPosts(filtered);
       } catch (err) {
         console.error(err);
       }
     };
-
-    if (user) loadMyPosts();
+    loadMyPosts();
   }, [user]);
 
-  return (
-    <div className="profile-container">
-      <h1 className="page-title">My Profile</h1>
+  if (!user) return <h2>Please login to view your profile.</h2>;
 
+  return (
+    <div className="main-container">
       <div className="profile-card">
-        <p><strong>Name:</strong> {user?.name}</p>
-        <p><strong>Email:</strong> {user?.email}</p>
-      </div>
+  <p><strong>Name:</strong> {user.username}</p>
+  <p><strong>Email:</strong> {user.email}</p>
+</div>
 
       <h2 className="section-title">My Posts</h2>
-
       <div className="grid">
         {myPosts.length === 0 ? (
           <p>You haven't created any posts yet.</p>
         ) : (
-          myPosts.map((post) => (
-            <PostItem key={post._id} post={post} />
-          ))
+          myPosts.map((post) => <PostItem key={post._id} post={post} />)
         )}
       </div>
     </div>
