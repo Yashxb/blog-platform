@@ -12,11 +12,14 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Layout Route */}
         <Route path="/" element={<MainLayout />}>
+
+          {/* Home Dashboard */}
           <Route index element={<Dashboard />} />
-          <Route path="signin" element={<SignIn />} />
-          <Route path="signup" element={<SignUp />} />
+
+          {/* Auth Routes */}
+          <Route path="login" element={<SignIn />} />
+          <Route path="register" element={<SignUp />} />
 
           {/* Protected Routes */}
           <Route
@@ -36,6 +39,7 @@ function App() {
               </ProtectedRoute>
             }
           />
+
         </Route>
       </Routes>
     </BrowserRouter>
