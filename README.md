@@ -3,43 +3,28 @@
 A full-stack Blog Platform built using the MERN stack (MongoDB, Express, React, Node.js) that enables users to register, authenticate, and create/manage blog posts through a modern responsive interface.
 
 🚀 Live Features
-
 🔐 User Authentication (JWT based login/register)
-
 ✍️ Create, Edit & Delete Posts
-
 📖 View All Blogs & Single Post Pages
-
 🔒 Protected Routes for Authenticated Users
-
 🧠 Persistent Login using Local Storage
-
 🎨 Responsive UI with reusable components
-
 ⚡ RESTful API with Express & MongoDB
-
 
 🧰 Tech Stack
 Frontend
 
 ⚛️ React.js
-
 🔀 React Router DOM
-
 🌐 Axios
-
 🧠 Context API (Auth State)
 
 Backend
 
 🟢 Node.js
-
 🚀 Express.js
-
 🍃 MongoDB + Mongoose
-
 🔐 JWT Authentication
-
 🔒 bcryptjs for password hashing
 
 📁 Project Structure
@@ -122,14 +107,12 @@ Service	URL
 Frontend	http://localhost:3000
 
 Backend	http://localhost:5000
-🔐 Authentication Flow
+
+🔐 Authentication Flow:
 
 User registers or logs in
-
 Server returns a JWT token
-
 Token is stored in localStorage
-
 Protected routes validate the user using Context API
 
 📌 API Overview
@@ -140,30 +123,27 @@ GET	/api/posts	Get all posts
 POST	/api/posts	Create post
 PUT	/api/posts/:id	Update post
 DELETE	/api/posts/:id	Delete post
-🎯 Future Enhancements
+
+🎯 Future Enhancements:
 
 👍 Like & Comment system
-
 🔎 Search & filter posts
-
 👤 User profile pages
-
 📸 Image upload for posts
-
 🌍 Deployment (Vercel + Render + MongoDB Atlas)
 
-🧪 Testing
+🧪 Testing:
 
 Basic manual testing performed using browser and API routes.
 
-🤝 Contributing
+🤝 Contributing:
 
 Contributions are welcome!
 Feel free to fork this repository and submit a pull request.
 
-👨‍💻 Author
+👨‍💻 Author:
 Yash Raj Bhasin
 
-⭐ Acknowledgement
+⭐ Acknowledgement:
 
 This project was built as part of a full-stack MERN learning journey.
