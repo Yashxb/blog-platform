@@ -80,6 +80,7 @@ BLOG-PLATFORM/
 
 ⚙️ Installation & Setup
 1️⃣ Clone the Repository
+
 git clone https://github.com/your-username/blog-platform.git
 cd blog-platform
 2️⃣ Backend Setup
@@ -107,8 +108,6 @@ Service	URL
 Frontend	http://localhost:3000
 
 Backend	http://localhost:5000
-
-🔐 Authentication Flow:
 
 User registers or logs in
 Server returns a JWT token

@@ -1,30 +1,37 @@
-import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getPostById } from "../services/postService"; 
 
-const Profile = () => {
-  const { user, setUser } = useContext(AuthContext);
-  const navigate = useNavigate();
+const PostDetails = () => {
+  const { id } = useParams(); L
+  const [post, setPost] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const logout = () => {
-    localStorage.removeItem("token"); 
-    setUser(null); 
-    navigate("/login"); 
-  };
+  useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        const data = await getPostById(id); 
+        setPost(data);
+      } catch (error) {
+        console.error("Error fetching post:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchPost();
+  }, [id]);
 
-  if (!user) {
-    return <h2>Please login to view your profile.</h2>;
-  }
+  if (loading) return <p>Loading post...</p>;
+  if (!post) return <p>Post not found.</p>;
 
   return (
-    <div className="container">
-      <h2>Profile Page</h2>
-      <p><strong>Name:</strong> {user.name}</p>
-      <p><strong>Email:</strong> {user.email}</p>
-
-      <button onClick={logout}>Logout</button>
+    <div className="post-details-container">
+      <h2>{post.title}</h2>
+      <p>{post.content}</p>
+      <p><strong>Author:</strong> {post.username || post.name}</p>
+      <p><strong>Posted on:</strong> {new Date(post.createdAt).toLocaleString()}</p>
     </div>
   );
 };
 
-export default Profile;
+export default PostDetails;

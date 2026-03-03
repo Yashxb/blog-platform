@@ -1,16 +1,14 @@
-import { Link, useNavigate } from "react-router-dom";
+mport { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 
 const Header = () => {
-  const { user, setUser } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const logout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    setUser(null);
-    navigate("/");
+  const handleLogout = () => {
+    logout();          
+    navigate("/login");
   };
 
   return (
@@ -21,17 +19,24 @@ const Header = () => {
 
       <nav className="nav">
         <Link to="/">Home</Link>
-        <Link to="/new">Write</Link>
-        <Link to="/profile">Profile</Link>
-        <Link to="/signin">Login</Link>
-        <Link to="/signup">Register</Link>
+
+        {user && <Link to="/new">Write</Link>}
+        {user && <Link to="/profile">Profile</Link>}
+
+        {!user && <Link to="/login">Login</Link>}
+        {!user && <Link to="/register">Register</Link>}
 
         {user && (
-          <button className="logout-btn" onClick={logout}>
+          <button className="logout-btn" onClick={handleLogout}>
             Logout
           </button>
         )}
       </nav>
+    </header>
+  );
+};
+
+export default Header;
     </header>
   );
 };
