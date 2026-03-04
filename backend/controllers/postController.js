@@ -12,7 +12,6 @@ exports.createPost = async (req, res) => {
     });
 
     await post.save();
-
     res.status(201).json(post);
   } catch (error) {
     console.error(error);
@@ -28,6 +27,23 @@ exports.getPosts = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error fetching posts" });
+  }
+};
+
+// ✅ GET SINGLE POST BY ID (THIS WAS MISSING)
+exports.getPostById = async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id)
+      .populate("author", "name email");
+
+    if (!post) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+
+    res.json(post);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error fetching post" });
   }
 };
 
@@ -48,7 +64,6 @@ exports.updatePost = async (req, res) => {
     post.content = req.body.content || post.content;
 
     await post.save();
-
     res.json(post);
   } catch (error) {
     console.error(error);
@@ -70,7 +85,6 @@ exports.deletePost = async (req, res) => {
     }
 
     await post.deleteOne();
-
     res.json({ message: "Post deleted successfully" });
   } catch (error) {
     console.error(error);
