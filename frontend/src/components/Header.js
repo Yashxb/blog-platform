@@ -1,4 +1,4 @@
-mport { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 
@@ -7,17 +7,17 @@ const Header = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    logout();          
+    logout();
     navigate("/login");
   };
 
   return (
     <header className="header">
-      <h2 className="logo">
+      <div className="logo">
         <Link to="/">BlogSpace</Link>
-      </h2>
+      </div>
 
-      <nav className="nav">
+      <nav>
         <Link to="/">Home</Link>
 
         {user && <Link to="/new">Write</Link>}
@@ -32,11 +32,6 @@ const Header = () => {
           </button>
         )}
       </nav>
-    </header>
-  );
-};
-
-export default Header;
     </header>
   );
 };

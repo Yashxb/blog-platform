@@ -4,6 +4,7 @@ const protect = (req, res, next) => {
   try {
     const authHeader = req.headers.authorization;
 
+   
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
       return res.status(401).json({ message: "No token provided" });
     }
@@ -12,7 +13,7 @@ const protect = (req, res, next) => {
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-  
+    
     req.user = {
       id: decoded.id,
     };
@@ -23,5 +24,7 @@ const protect = (req, res, next) => {
     return res.status(401).json({ message: "Token invalid or expired" });
   }
 };
+
+module.exports = protect;;
 
 module.exports = protect;
