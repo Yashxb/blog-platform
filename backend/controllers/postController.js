@@ -30,7 +30,7 @@ exports.getPosts = async (req, res) => {
   }
 };
 
-// ✅ GET SINGLE POST BY ID (THIS WAS MISSING)
+
 exports.getPostById = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id)
