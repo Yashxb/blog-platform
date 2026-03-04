@@ -17,7 +17,7 @@ const NewPost = () => {
     }
 
     try {
-      // Token automatically added by interceptor
+     
       await API.post("/posts", form);
 
       alert("✅ Post created successfully!");
