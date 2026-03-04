@@ -3,7 +3,7 @@ import { API } from "./api";
 // Get all posts
 export const getPosts = async () => {
   const res = await API.get("/posts");
-  return res.data; // return only data
+  return res.data;
 };
 
 // Create a new post
@@ -12,8 +12,8 @@ export const createPost = async (data) => {
   return res.data;
 };
 
-// Get single post by ID
-export const getSinglePost = async (id) => {
+
+export const getPostById = async (id) => {
   const res = await API.get(`/posts/${id}`);
   return res.data;
 };
@@ -28,4 +28,4 @@ export const updatePost = async (id, data) => {
 export const deletePost = async (id) => {
   const res = await API.delete(`/posts/${id}`);
   return res.data;
-};;
+};
